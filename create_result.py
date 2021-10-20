@@ -23,7 +23,7 @@ sys_in = ''
 for line in sys.stdin:
 	sys_in += line\n''')
 
-# 遍历生成根据case生成条件
+# 遍历根据case生成条件
 for root, dirs, files in os.walk(paths.split('/')[0]):
 	for name in files:
 

@@ -80,16 +80,20 @@ def calculate_submission_memory_duration(submission_ids, domain='http://localhos
 	return memories, durations
 
 
+def show_info(memory, duration):
+	print('======内存统计=======')
+	print('内存消耗统计 ' + str(memory))
+	print('内存平均值 = ' + str(sum(memory) / len(memory) / 1024 / 1024) + 'mb')
+	print('内存最大值 = ' + str(max(memory) / 1024 / 1024) + 'mb')
+	print('内存最小值 = ' + str(min(memory) / 1024 / 1024) + 'mb')
+	print('======时间统计=======')
+	print('时间消耗统计 ' + str(duration))
+	print('时间平均值 = ' + str(sum(duration) / len(duration)) + 'ms')
+	print('时间最大值 = ' + str(max(duration)) + 'ms')
+	print('时间最小值 = ' + str(min(duration)) + 'ms')
+
+
 if __name__ == '__main__':
 	submission_ids = batch_judge(file_path=file_path, times=10)
 	memory, duration = calculate_submission_memory_duration(submission_ids)
-	print('======内存统计=======')
-	print('内存消耗统计 ' + str(memory))
-	print('内存平均值 = ' + str(sum(memory) / len(memory)/1024/1024)+'mb')
-	print('内存最大值 = ' + str(max(memory)/1024/1024)+'mb')
-	print('内存最小值 = ' + str(min(memory)/1024/1024)+'mb')
-	print('======时间统计=======')
-	print('时间消耗统计 ' + str(duration))
-	print('时间平均值 = ' + str(sum(duration) / len(duration))+'ms')
-	print('时间最大值 = ' + str(max(duration))+'ms')
-	print('时间最小值 = ' + str(min(duration))+'ms')
+	show_info(memory, duration)
